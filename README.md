@@ -11,7 +11,7 @@ pip install margin-official-strategies
 If you want to write your own strategies, we recommend installing the strategy SDK from
 https://github.com/MarginOpenSource/strategy-sdk or using pip
 ```
-pip install margin-official-strategies
+pip install margin-strategy-sdk
 ```
 and start by cloning the template strategy from
 https://github.com/MarginOpenSource/strategy-template.
