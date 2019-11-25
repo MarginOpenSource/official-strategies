@@ -10,10 +10,11 @@ START_ON_BUY = True
 
 
 class Strategy(StrategyBase):
-    ##################################################################
+    ##############################################################
     # strategy logic methods
-    ##################################################################
+    ##############################################################
     def __init__(self):
+        super(Strategy, self).__init__()
         self.waiting_order_id = 0
         self.current_order = None
 
@@ -69,9 +70,9 @@ class Strategy(StrategyBase):
         # nothing to do here for now.
         pass
 
-##################################################################
-# private update methods
-##################################################################
+    ##############################################################
+    # private update methods
+    ##############################################################
     def on_order_update(self, update: OrderUpdate) -> None:
         print("Order update status was: ", update.status)
         if update.status == OrderUpdate.FILLED or update.status == OrderUpdate.ADAPTED_AND_FILLED:
