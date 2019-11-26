@@ -32,6 +32,7 @@ class Strategy(StrategyBase):
     def get_strategy_config(self) -> StrategyConfig:
         s = StrategyConfig()
         s.required_data_updates = set()
+        s.normalize_exchange_buy_amounts = True
         return s
 
     def save_strategy_state(self) -> Dict[str, str]:
@@ -52,7 +53,7 @@ class Strategy(StrategyBase):
         price = BUY_PRICE if buy_side else SELL_PRICE
         print("placing {} order".format("buy" if buy_side else "sell"))
         amount = tcm.round_amount(amount, RoundingType.ROUND)
-        assert(tcm.is_order_valid(buy_side, amount, price))
+        assert(tcm.is_limit_order_valid(buy_side, amount, price))
         self.waiting_order_id = self.place_limit_order(buy_side, amount, price)
 
     def start(self) -> None:
